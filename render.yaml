@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: bs-drafter
+    env: docker
+    plan: free
+    envVars:
+      - key: BRAWL_STARS_API_KEY
+        sync: false
+      - key: HF_TOKEN
+        sync: false
+      - key: HF_REPO_ID
+        sync: false

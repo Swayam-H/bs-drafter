@@ -1,0 +1,23 @@
+[project]
+name = "bs-drafter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas",
+    "numpy",
+    "xgboost",
+    "scikit-learn",
+    "flask",
+    "flask-cors",
+    "requests",
+    "python-dotenv",
+    "catboost>=1.2.10",
+    "optuna>=4.9.0",
+    "lightgbm>=4.6.0",
+    "torch",
+    "huggingface-hub",
+    "apscheduler",
+]
+

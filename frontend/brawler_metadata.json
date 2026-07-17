@@ -1,0 +1,422 @@
+{
+  "8-BIT": {
+    "class": "Damage Dealer",
+    "rarity": "Super Rare"
+  },
+  "ALLI": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "AMBER": {
+    "class": "Controller",
+    "rarity": "Legendary"
+  },
+  "ANGELO": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "ASH": {
+    "class": "Tank",
+    "rarity": "Epic"
+  },
+  "BARLEY": {
+    "class": "Artillery",
+    "rarity": "Rare"
+  },
+  "BEA": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "BELLE": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "BERRY": {
+    "class": "Support",
+    "rarity": "Epic"
+  },
+  "BIBI": {
+    "class": "Tank",
+    "rarity": "Epic"
+  },
+  "BO": {
+    "class": "Controller",
+    "rarity": "Epic"
+  },
+  "BOLT": {
+    "class": "Unknown",
+    "rarity": "Epic"
+  },
+  "BONNIE": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "BROCK": {
+    "class": "Marksman",
+    "rarity": "Rare"
+  },
+  "BULL": {
+    "class": "Tank",
+    "rarity": "Rare"
+  },
+  "BUSTER": {
+    "class": "Tank",
+    "rarity": "Mythic"
+  },
+  "BUZZ": {
+    "class": "Assassin",
+    "rarity": "Mythic"
+  },
+  "BYRON": {
+    "class": "Support",
+    "rarity": "Mythic"
+  },
+  "CARL": {
+    "class": "Damage Dealer",
+    "rarity": "Super Rare"
+  },
+  "CHARLIE": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "CHESTER": {
+    "class": "Damage Dealer",
+    "rarity": "Legendary"
+  },
+  "CHUCK": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "CLANCY": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "COLETTE": {
+    "class": "Damage Dealer",
+    "rarity": "Epic"
+  },
+  "COLT": {
+    "class": "Damage Dealer",
+    "rarity": "Rare"
+  },
+  "CORDELIUS": {
+    "class": "Assassin",
+    "rarity": "Legendary"
+  },
+  "CROW": {
+    "class": "Assassin",
+    "rarity": "Legendary"
+  },
+  "DAMIAN": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "DARRYL": {
+    "class": "Tank",
+    "rarity": "Super Rare"
+  },
+  "DOUG": {
+    "class": "Support",
+    "rarity": "Mythic"
+  },
+  "DRACO": {
+    "class": "Tank",
+    "rarity": "Legendary"
+  },
+  "DYNAMIKE": {
+    "class": "Artillery",
+    "rarity": "Super Rare"
+  },
+  "EDGAR": {
+    "class": "Assassin",
+    "rarity": "Epic"
+  },
+  "EL PRIMO": {
+    "class": "Tank",
+    "rarity": "Rare"
+  },
+  "EMZ": {
+    "class": "Controller",
+    "rarity": "Epic"
+  },
+  "EVE": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "FANG": {
+    "class": "Assassin",
+    "rarity": "Mythic"
+  },
+  "FINX": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "FRANK": {
+    "class": "Tank",
+    "rarity": "Epic"
+  },
+  "GALE": {
+    "class": "Controller",
+    "rarity": "Epic"
+  },
+  "GENE": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "GIGI": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "GLOWY": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "GRAY": {
+    "class": "Support",
+    "rarity": "Mythic"
+  },
+  "GRIFF": {
+    "class": "Controller",
+    "rarity": "Epic"
+  },
+  "GROM": {
+    "class": "Artillery",
+    "rarity": "Epic"
+  },
+  "GUS": {
+    "class": "Support",
+    "rarity": "Super Rare"
+  },
+  "HANK": {
+    "class": "Tank",
+    "rarity": "Epic"
+  },
+  "JACKY": {
+    "class": "Tank",
+    "rarity": "Super Rare"
+  },
+  "JAE-YONG": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "JANET": {
+    "class": "Marksman",
+    "rarity": "Mythic"
+  },
+  "JESSIE": {
+    "class": "Controller",
+    "rarity": "Super Rare"
+  },
+  "JUJU": {
+    "class": "Artillery",
+    "rarity": "Mythic"
+  },
+  "KAZE": {
+    "class": "Unknown",
+    "rarity": "Ultra Legendary"
+  },
+  "KENJI": {
+    "class": "Assassin",
+    "rarity": "Legendary"
+  },
+  "KIT": {
+    "class": "Support",
+    "rarity": "Legendary"
+  },
+  "LARRY & LAWRIE": {
+    "class": "Artillery",
+    "rarity": "Epic"
+  },
+  "LEON": {
+    "class": "Assassin",
+    "rarity": "Legendary"
+  },
+  "LILY": {
+    "class": "Assassin",
+    "rarity": "Mythic"
+  },
+  "LOLA": {
+    "class": "Damage Dealer",
+    "rarity": "Epic"
+  },
+  "LOU": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "LUMI": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "MAISIE": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "MANDY": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "MAX": {
+    "class": "Support",
+    "rarity": "Mythic"
+  },
+  "MEEPLE": {
+    "class": "Unknown",
+    "rarity": "Epic"
+  },
+  "MEG": {
+    "class": "Tank",
+    "rarity": "Legendary"
+  },
+  "MELODIE": {
+    "class": "Assassin",
+    "rarity": "Mythic"
+  },
+  "MICO": {
+    "class": "Assassin",
+    "rarity": "Mythic"
+  },
+  "MINA": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "MOE": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "MORTIS": {
+    "class": "Assassin",
+    "rarity": "Mythic"
+  },
+  "MR. P": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "NAJIA": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "NANI": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "NITA": {
+    "class": "Damage Dealer",
+    "rarity": "Rare"
+  },
+  "NORI": {
+    "class": "Unknown",
+    "rarity": "Legendary"
+  },
+  "OLLIE": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "OTIS": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "PAM": {
+    "class": "Support",
+    "rarity": "Epic"
+  },
+  "PEARL": {
+    "class": "Damage Dealer",
+    "rarity": "Epic"
+  },
+  "PENNY": {
+    "class": "Artillery",
+    "rarity": "Super Rare"
+  },
+  "PIERCE": {
+    "class": "Unknown",
+    "rarity": "Legendary"
+  },
+  "PIPER": {
+    "class": "Marksman",
+    "rarity": "Epic"
+  },
+  "POCO": {
+    "class": "Support",
+    "rarity": "Rare"
+  },
+  "R-T": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "RICO": {
+    "class": "Damage Dealer",
+    "rarity": "Super Rare"
+  },
+  "ROSA": {
+    "class": "Tank",
+    "rarity": "Rare"
+  },
+  "RUFFS": {
+    "class": "Support",
+    "rarity": "Mythic"
+  },
+  "SAM": {
+    "class": "Assassin",
+    "rarity": "Epic"
+  },
+  "SANDY": {
+    "class": "Controller",
+    "rarity": "Legendary"
+  },
+  "SHADE": {
+    "class": "Assassin",
+    "rarity": "Epic"
+  },
+  "SHELLY": {
+    "class": "Damage Dealer",
+    "rarity": "Common"
+  },
+  "SIRIUS": {
+    "class": "Unknown",
+    "rarity": "Ultra Legendary"
+  },
+  "SPIKE": {
+    "class": "Damage Dealer",
+    "rarity": "Legendary"
+  },
+  "SPROUT": {
+    "class": "Artillery",
+    "rarity": "Mythic"
+  },
+  "SQUEAK": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "STARR NOVA": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  },
+  "STU": {
+    "class": "Assassin",
+    "rarity": "Epic"
+  },
+  "SURGE": {
+    "class": "Damage Dealer",
+    "rarity": "Legendary"
+  },
+  "TARA": {
+    "class": "Damage Dealer",
+    "rarity": "Mythic"
+  },
+  "TICK": {
+    "class": "Artillery",
+    "rarity": "Super Rare"
+  },
+  "TRUNK": {
+    "class": "Unknown",
+    "rarity": "Epic"
+  },
+  "WILLOW": {
+    "class": "Controller",
+    "rarity": "Mythic"
+  },
+  "ZIGGY": {
+    "class": "Unknown",
+    "rarity": "Mythic"
+  }
+}

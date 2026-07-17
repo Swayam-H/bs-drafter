@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars ML Draft Predictor</title>
+    <meta name="description" content="Predict optimal draft selections for Brawl Stars ranked matches using XGBoost and game-theoretic Minimax analysis.">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="dashboard">
+    <!-- Header -->
+    <div class="header">
+        <h1>Brawl Stars Draft Predictor</h1>
+        <p>XGBoost Intelligence • Game-Theoretic Minimax Counter-Picks</p>
+        <div class="header-accent"></div>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Left Column: Brawler Selection Hub -->
+        <div class="column-left">
+            <div class="panel brawler-selection-panel">
+                <h3 class="panel-title text-accent-blue">Brawler Selection</h3>
+                
+                <div class="brawler-grid-section">
+                    <div class="grid-controls">
+                        <div class="input-group search-group">
+                            <label for="brawlerSearch">Search Brawlers (Enter to pick top result)</label>
+                            <input type="text" id="brawlerSearch" placeholder="Type name (e.g. SHELLY, PIPER...)" oninput="filterBrawlerGrid()" onkeypress="handleSearchEnter(event)" disabled>
+                        </div>
+                        <div class="input-group mode-toggle-container">
+                            <label>Selection Mode</label>
+                            <div class="mode-toggle-group">
+                                <button id="pickModeBtn" class="mode-btn active" onclick="setGridMode('pick')" disabled>Pick</button>
+                                <button id="banModeBtn" class="mode-btn ban-mode" onclick="setGridMode('ban')" disabled>Ban</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Role Filters -->
+                    <div class="input-group role-filters-container">
+                        <label>Filter by Role</label>
+                        <div class="role-filters" id="roleFilters">
+                            <button id="roleBtn-ALL" class="role-btn active" onclick="filterByRole('ALL')">All</button>
+                            <button id="roleBtn-Damage-Dealer" class="role-btn" onclick="filterByRole('Damage Dealer')">Damage Dealer</button>
+                            <button id="roleBtn-Tank" class="role-btn" onclick="filterByRole('Tank')">Tank</button>
+                            <button id="roleBtn-Marksman" class="role-btn" onclick="filterByRole('Marksman')">Marksman</button>
+                            <button id="roleBtn-Assassin" class="role-btn" onclick="filterByRole('Assassin')">Assassin</button>
+                            <button id="roleBtn-Support" class="role-btn" onclick="filterByRole('Support')">Support</button>
+                            <button id="roleBtn-Controller" class="role-btn" onclick="filterByRole('Controller')">Controller</button>
+                            <button id="roleBtn-Artillery" class="role-btn" onclick="filterByRole('Artillery')">Artillery</button>
+                        </div>
+                    </div>
+                    
+                    <div class="brawler-grid" id="brawlerGrid">
+                        <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">
+                            Starting server check...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Column: Live Draft Board & Status -->
+        <div class="column-middle">
+            <!-- Turn Banner -->
+            <div class="status-banner" id="draftStatus">
+                Select Map name on the right to start draft simulation
+            </div>
+
+            <!-- Live Draft Board -->
+            <div class="draft-arena">
+                <!-- Allied Team -->
+                <div class="panel team-blue">
+                    <h3 class="panel-title">Allied Team</h3>
+                    <div class="draft-slots" id="ally-slots">
+                        <div class="draft-slot empty" id="ally-0">Pick 1 (Allied)</div>
+                        <div class="draft-slot empty" id="ally-1">Pick 4 (Allied)</div>
+                        <div class="draft-slot empty" id="ally-2">Pick 5 (Allied)</div>
+                    </div>
+                </div>
+                
+                <!-- Enemy Team -->
+                <div class="panel team-red">
+                    <h3 class="panel-title">Enemy Team</h3>
+                    <div class="draft-slots" id="enemy-slots">
+                        <div class="draft-slot empty" id="enemy-0">Pick 2 (Enemy)</div>
+                        <div class="draft-slot empty" id="enemy-1">Pick 3 (Enemy)</div>
+                        <div class="draft-slot empty" id="enemy-2">Pick 6 (Enemy)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Bans Panel -->
+            <div class="panel bans-panel">
+                <h3 class="panel-title text-accent-red">🚫 Active Draft Bans</h3>
+                <div class="bans-container" id="bans-list">
+                    <span style="color: var(--text-muted); font-size: 0.9rem;">No brawlers banned yet. Click brawlers in "Ban Mode" to add.</span>
+                </div>
+            </div>
+
+            <!-- Command CLI Console Panel -->
+            <div class="panel console-panel">
+                <h3 class="panel-title text-accent-cyan">⌨️ Draft Command Console</h3>
+                <div class="console-container">
+                    <input type="text" id="consoleInput" placeholder="Type command... (e.g. 'b tara', 'a spike', 'e colt')" autocomplete="off" onkeydown="handleConsoleInput(event)">
+                    <div id="consoleSuggestions" class="console-suggestions" style="display: none;"></div>
+                    <div class="console-help">
+                        <code>b [name]</code>: Ban • <code>a [name]</code>: Ally Pick • <code>e [name]</code>: Enemy Pick • <code>u [name]</code>: Undo/Remove • <code>reset</code>: Reset
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Configs & AI Recommendations -->
+        <div class="column-right">
+            <!-- Configuration & Control Panel -->
+            <div class="panel config-panel">
+                <h3 class="panel-title text-accent-gold">Simulation Config</h3>
+                <div class="config-flow">
+                    <div class="input-group">
+                        <label for="mapSelect">Map Name</label>
+                        <select id="mapSelect" onchange="handleMapSelect(this)">
+                            <option value="">Loading maps...</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="rankSelect">Draft ELO Tier</label>
+                        <select id="rankSelect" onchange="handleRankSelect(this)">
+                            <option value="high">High ELO (Masters / Legendary)</option>
+                            <option value="low">Low ELO (Gold / Diamond / Mythic)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>First Pick Team</label>
+                        <div class="mode-toggle-group">
+                            <button id="firstPickAllyBtn" class="mode-btn active" onclick="setFirstPickTeam('ally')" disabled>Allies (We)</button>
+                            <button id="firstPickEnemyBtn" class="mode-btn" onclick="setFirstPickTeam('enemy')" disabled>Enemies</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Brawl Stars Account Sync -->
+                    <div class="sync-section">
+                        <div class="input-group">
+                            <label for="playerTagInput">BS Player Tag</label>
+                            <div class="sync-input-container">
+                                <input type="text" id="playerTagInput" placeholder="Enter tag (e.g. #9PJY8...)" onkeypress="handleTagKeyPress(event)">
+                                <button id="syncBtn" class="btn-sync" onclick="syncPlayerProfile()">Sync</button>
+                            </div>
+                            <span id="syncStatus" class="sync-status status-unlinked">Unlinked</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="mySlotSelect">Your Draft Slot</label>
+                            <select id="mySlotSelect" onchange="handleSlotSelect(this)">
+                                <option value="none">Not in this draft</option>
+                                <option value="0">Ally Pick 1</option>
+                                <option value="1">Ally Pick 2</option>
+                                <option value="2">Ally Pick 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="control-actions">
+                        <button class="btn-undo" onclick="undoLastPick()" id="undoBtn">↩ Undo Last</button>
+                        <button class="btn-reset" onclick="resetDraft()">Reset Board</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Recommendations Panel -->
+            <div class="panel recommendations-panel" style="display: none;" id="recommendations-panel">
+                <h3 class="panel-title text-accent-green">🤖 Stacking AI Predictions</h3>
+                <div id="mlResults"></div>
+            </div>
+
+            <!-- Draft History Panel -->
+            <div class="panel history-panel">
+                <div class="history-header" onclick="toggleHistory()">
+                    <h3 class="panel-title" style="margin: 0; cursor: pointer;">📋 Draft History</h3>
+                    <span class="history-toggle" id="historyToggle">▼</span>
+                </div>
+                <div class="history-content" id="historyContent" style="display: none;">
+                    <div id="historyList">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">No drafts saved yet.</span>
+                    </div>
+                    <button class="btn-reset btn-history-clear" onclick="clearDraftHistory()">Clear History</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
